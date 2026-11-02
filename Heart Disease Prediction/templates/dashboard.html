@@ -1,0 +1,413 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}
+ML Dashboard
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================= -->
+<!-- HEADER -->
+<!-- ============================= -->
+
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+    <div>
+        <h1 class="fw-bold mb-1">
+            <i class="bi bi-speedometer2"></i>
+            ML Dashboard
+        </h1>
+
+        <p class="text-muted mb-0">
+            Model performance and prediction statistics
+        </p>
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <a href="/export/csv" class="btn btn-success">
+            <i class="bi bi-download"></i>
+            Export CSV
+        </a>
+
+        <a href="/" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i>
+            New Prediction
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- STATISTICS -->
+<!-- ============================= -->
+
+<div class="row g-4 mb-4">
+
+    <!-- TOTAL PREDICTIONS -->
+
+    <div class="col-md-4">
+
+        <div class="stat-card h-100">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <p class="text-muted mb-1">
+                        Total Predictions
+                    </p>
+
+                    <h2 class="fw-bold mb-0">
+                        {{ total_predictions }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon">
+                    <i class="bi bi-activity"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DISEASE PREDICTIONS -->
+
+    <div class="col-md-4">
+
+        <div class="stat-card h-100">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <p class="text-muted mb-1">
+                        Disease Predictions
+                    </p>
+
+                    <h2 class="fw-bold text-danger mb-0">
+                        {{ disease_predictions }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon text-danger">
+                    <i class="bi bi-heartbreak-fill"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NO DISEASE PREDICTIONS -->
+
+    <div class="col-md-4">
+
+        <div class="stat-card h-100">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div>
+
+                    <p class="text-muted mb-1">
+                        No Disease Predictions
+                    </p>
+
+                    <h2 class="fw-bold text-success mb-0">
+                        {{ no_disease_predictions }}
+                    </h2>
+
+                </div>
+
+                <div class="stat-icon text-success">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- BEST MODEL -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-8">
+
+                <p class="text-muted mb-1">
+                    Automatically Selected Best Model
+                </p>
+
+                <h2 class="text-primary fw-bold">
+                    {{ best_model }}
+                </h2>
+
+                {% if metrics and metrics.get("models") and metrics["models"].get(best_model) %}
+
+                    <p class="mb-0">
+
+                        Test Accuracy:
+
+                        <strong>
+                            {{ metrics["models"][best_model]["accuracy"] }}%
+                        </strong>
+
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-4 text-md-end">
+
+                <div class="model-badge">
+
+                    <i class="bi bi-robot"></i>
+
+                    Best Performing Model
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- MODEL COMPARISON -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+            <i class="bi bi-bar-chart-fill"></i>
+            Model Comparison
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        {% if metrics and metrics.get("models") %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1 Score</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for name, values in metrics["models"].items() %}
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                {{ name }}
+                            </strong>
+
+                        </td>
+
+                        <td style="min-width: 180px;">
+
+                            <div class="d-flex align-items-center gap-2">
+
+                                <div
+                                    class="progress flex-grow-1"
+                                    style="height: 10px;">
+
+                                    <div
+                                        class="progress-bar"
+                                        role="progressbar"
+                                        style="width: {{ values['accuracy'] }}&#37;;">
+                                    </div>
+
+                                </div>
+
+                                <span>
+                                    {{ values['accuracy'] }}%
+                                </span>
+
+                            </div>
+
+                        </td>
+
+                        <td>
+                            {{ values['precision'] }}%
+                        </td>
+
+                        <td>
+                            {{ values['recall'] }}%
+                        </td>
+
+                        <td>
+                            {{ values['f1_score'] }}%
+                        </td>
+
+                        <td>
+
+                            {% if name == best_model %}
+
+                            <span class="badge bg-success">
+
+                                <i class="bi bi-check-circle"></i>
+
+                                Best
+
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-secondary">
+
+                                Evaluated
+
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="alert alert-warning mb-0">
+
+            <i class="bi bi-exclamation-triangle"></i>
+
+            Model metrics are not available.
+
+            Run
+            <strong>train_model.py</strong>
+            first.
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PROJECT INFORMATION -->
+<!-- ============================= -->
+
+<div class="row g-4">
+
+    <!-- DATASET -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>
+
+                    <i class="bi bi-database"></i>
+
+                    Dataset
+
+                </h5>
+
+                <p class="text-muted">
+
+                    The project uses the UCI Heart Disease
+                    dataset with 13 input features and a
+                    binary prediction target.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTICE -->
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <h5>
+
+                    <i class="bi bi-shield-check"></i>
+
+                    Academic Notice
+
+                </h5>
+
+                <p class="text-muted mb-0">
+
+                    Model results are intended for academic
+                    demonstration. They should not be used
+                    for clinical diagnosis.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

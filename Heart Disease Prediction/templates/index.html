@@ -1,0 +1,795 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Heart Disease Prediction
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ============================= -->
+<!-- HERO SECTION -->
+<!-- ============================= -->
+
+<div class="hero-section mb-4">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-8">
+
+            <span class="badge bg-light text-primary mb-3">
+
+                <i class="bi bi-cpu"></i>
+
+                AI & Machine Learning
+
+            </span>
+
+
+            <h1 class="display-5 fw-bold">
+
+                Heart Disease
+                Prediction System
+
+            </h1>
+
+
+            <p class="lead">
+
+                Enter patient-related dataset values
+                and use a machine learning classification
+                model to generate a prediction.
+
+            </p>
+
+
+            <div class="model-label">
+
+                <i class="bi bi-robot"></i>
+
+                Current Best Model:
+
+                <strong>
+                    {{ model_name }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 text-center">
+
+            <div class="hero-heart">
+
+                <i class="bi bi-heart-pulse-fill"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- WARNING -->
+<!-- ============================= -->
+
+<div class="alert alert-warning shadow-sm">
+
+    <div class="d-flex align-items-start">
+
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+        <div>
+
+            <strong>Academic Use Only</strong>
+
+            <br>
+
+            This project is intended for academic and
+            machine-learning demonstration purposes.
+            It is not a medical diagnosis system.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PREDICTION FORM -->
+<!-- ============================= -->
+
+<form
+    action="/predict"
+    method="POST"
+    id="predictionForm">
+
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header form-header">
+
+            <div>
+
+                <h4 class="mb-1">
+
+                    <i class="bi bi-person-vcard"></i>
+
+                    Patient Dataset Input
+
+                </h4>
+
+                <p class="text-muted mb-0">
+
+                    Enter all required values
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row g-4">
+
+
+                <!-- ===================== -->
+                <!-- AGE -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="age"
+                        class="form-label">
+
+                        Age
+
+                    </label>
+
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-person"></i>
+
+                        </span>
+
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            class="form-control"
+                            min="1"
+                            max="120"
+                            placeholder="Example: 55"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- SEX -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="sex"
+                        class="form-label">
+
+                        Sex
+
+                    </label>
+
+
+                    <select
+                        id="sex"
+                        name="sex"
+                        class="form-select"
+                        required>
+
+                        <option value="">
+                            Select Sex
+                        </option>
+
+                        <option value="1">
+                            Male
+                        </option>
+
+                        <option value="0">
+                            Female
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- CHEST PAIN -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="cp"
+                        class="form-label">
+
+                        Chest Pain Type
+
+                    </label>
+
+
+                    <select
+                        id="cp"
+                        name="cp"
+                        class="form-select"
+                        required>
+
+                        <option value="">
+                            Select Type
+                        </option>
+
+                        <option value="1">
+                            Typical Angina
+                        </option>
+
+                        <option value="2">
+                            Atypical Angina
+                        </option>
+
+                        <option value="3">
+                            Non-Anginal Pain
+                        </option>
+
+                        <option value="4">
+                            Asymptomatic
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- BLOOD PRESSURE -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="trestbps"
+                        class="form-label">
+
+                        Resting Blood Pressure
+
+                    </label>
+
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-heart-pulse"></i>
+
+                        </span>
+
+
+                        <input
+                            type="number"
+                            id="trestbps"
+                            name="trestbps"
+                            class="form-control"
+                            min="50"
+                            max="300"
+                            placeholder="Example: 120"
+                            required>
+
+                    </div>
+
+                    <div class="form-text">
+
+                        Dataset value in mm Hg
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- CHOLESTEROL -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="chol"
+                        class="form-label">
+
+                        Cholesterol
+
+                    </label>
+
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-droplet"></i>
+
+                        </span>
+
+
+                        <input
+                            type="number"
+                            id="chol"
+                            name="chol"
+                            class="form-control"
+                            min="50"
+                            max="700"
+                            placeholder="Example: 200"
+                            required>
+
+                    </div>
+
+                    <div class="form-text">
+
+                        Dataset value in mg/dl
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- FASTING BLOOD SUGAR -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="fbs"
+                        class="form-label">
+
+                        Fasting Blood Sugar
+
+                    </label>
+
+
+                    <select
+                        id="fbs"
+                        name="fbs"
+                        class="form-select"
+                        required>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                    </select>
+
+                    <div class="form-text">
+
+                        Dataset encoded value
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- REST ECG -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="restecg"
+                        class="form-label">
+
+                        Resting ECG
+
+                    </label>
+
+
+                    <select
+                        id="restecg"
+                        name="restecg"
+                        class="form-select"
+                        required>
+
+                        <option value="0">
+                            Normal
+                        </option>
+
+                        <option value="1">
+                            ST-T Wave Abnormality
+                        </option>
+
+                        <option value="2">
+                            LV Hypertrophy
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- MAX HEART RATE -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="thalach"
+                        class="form-label">
+
+                        Maximum Heart Rate
+
+                    </label>
+
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-activity"></i>
+
+                        </span>
+
+
+                        <input
+                            type="number"
+                            id="thalach"
+                            name="thalach"
+                            class="form-control"
+                            min="50"
+                            max="250"
+                            placeholder="Example: 150"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- EXERCISE ANGINA -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="exang"
+                        class="form-label">
+
+                        Exercise-Induced Angina
+
+                    </label>
+
+
+                    <select
+                        id="exang"
+                        name="exang"
+                        class="form-select"
+                        required>
+
+                        <option value="0">
+                            No
+                        </option>
+
+                        <option value="1">
+                            Yes
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- OLDPEAK -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="oldpeak"
+                        class="form-label">
+
+                        ST Depression (Oldpeak)
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="oldpeak"
+                        name="oldpeak"
+                        class="form-control"
+                        min="0"
+                        max="10"
+                        step="0.1"
+                        placeholder="Example: 1.0"
+                        required>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- SLOPE -->
+                <!-- ===================== -->
+
+                <div class="col-md-4">
+
+                    <label
+                        for="slope"
+                        class="form-label">
+
+                        ST Segment Slope
+
+                    </label>
+
+
+                    <select
+                        id="slope"
+                        name="slope"
+                        class="form-select"
+                        required>
+
+                        <option value="1">
+                            Upsloping
+                        </option>
+
+                        <option value="2">
+                            Flat
+                        </option>
+
+                        <option value="3">
+                            Downsloping
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- CA -->
+                <!-- ===================== -->
+
+                <div class="col-md-6">
+
+                    <label
+                        for="ca"
+                        class="form-label">
+
+                        Number of Major Vessels (CA)
+
+                    </label>
+
+
+                    <select
+                        id="ca"
+                        name="ca"
+                        class="form-select"
+                        required>
+
+                        <option value="0">
+                            0
+                        </option>
+
+                        <option value="1">
+                            1
+                        </option>
+
+                        <option value="2">
+                            2
+                        </option>
+
+                        <option value="3">
+                            3
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ===================== -->
+                <!-- THAL -->
+                <!-- ===================== -->
+
+                <div class="col-md-6">
+
+                    <label
+                        for="thal"
+                        class="form-label">
+
+                        Thalassemia
+
+                    </label>
+
+
+                    <select
+                        id="thal"
+                        name="thal"
+                        class="form-select"
+                        required>
+
+                        <option value="3">
+                            Normal
+                        </option>
+
+                        <option value="6">
+                            Fixed Defect
+                        </option>
+
+                        <option value="7">
+                            Reversible Defect
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ===================== -->
+            <!-- BUTTONS -->
+            <!-- ===================== -->
+
+            <div class="d-flex
+                        gap-2
+                        flex-wrap
+                        mt-5">
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-lg"
+                    id="predictButton">
+
+                    <i class="bi bi-cpu"></i>
+
+                    Run Prediction
+
+                </button>
+
+
+                <button
+                    type="reset"
+                    class="btn btn-outline-secondary btn-lg">
+
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Reset
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+
+<!-- ============================= -->
+<!-- FEATURE CARDS -->
+<!-- ============================= -->
+
+<div class="row g-4">
+
+
+    <div class="col-md-4">
+
+        <div class="info-card h-100">
+
+            <div class="info-icon">
+
+                <i class="bi bi-bar-chart-fill"></i>
+
+            </div>
+
+
+            <h5>
+                Multiple ML Models
+            </h5>
+
+
+            <p class="text-muted">
+
+                Logistic Regression, KNN, Decision Tree,
+                Random Forest and SVM are evaluated.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="info-card h-100">
+
+            <div class="info-icon">
+
+                <i class="bi bi-database-fill"></i>
+
+            </div>
+
+
+            <h5>
+                Prediction History
+            </h5>
+
+
+            <p class="text-muted">
+
+                Previous predictions are saved
+                in a local SQLite database.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="info-card h-100">
+
+            <div class="info-icon">
+
+                <i class="bi bi-file-earmark-pdf-fill"></i>
+
+            </div>
+
+
+            <h5>
+                PDF Reports
+            </h5>
+
+
+            <p class="text-muted">
+
+                Generate a PDF report for
+                each prediction.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

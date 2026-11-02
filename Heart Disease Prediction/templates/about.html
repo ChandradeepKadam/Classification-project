@@ -1,0 +1,931 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}
+About HeartAI
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================= -->
+<!-- PAGE HEADER -->
+<!-- ============================= -->
+
+<div class="hero-section mb-4">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-8">
+
+            <span class="badge bg-light text-primary mb-3">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                About Project
+
+            </span>
+
+            <h1 class="display-5 fw-bold">
+
+                Heart Disease Prediction System
+
+            </h1>
+
+            <p class="lead mb-0">
+
+                An AI and Machine Learning based web
+                application for heart disease prediction
+                using classification techniques.
+
+            </p>
+
+        </div>
+
+
+        <div class="col-lg-4 text-center">
+
+            <div class="hero-heart">
+
+                <i class="bi bi-heart-pulse-fill"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PROJECT OVERVIEW -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-journal-text"></i>
+
+            Project Overview
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <p>
+
+            The <strong>Heart Disease Prediction System</strong>
+            is a web-based Artificial Intelligence and
+            Machine Learning project developed to demonstrate
+            classification techniques on heart disease data.
+
+        </p>
+
+
+        <p>
+
+            The application takes patient-related dataset
+            attributes as input and uses trained machine
+            learning models to classify the input into
+            a heart disease or no-heart-disease category.
+
+        </p>
+
+
+        <p class="mb-0">
+
+            The project combines Python, Scikit-learn,
+            Pandas, Flask, Bootstrap and SQLite to create
+            a complete machine learning web application.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- TECHNOLOGIES -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-code-slash"></i>
+
+            Technologies Used
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="row g-3">
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-filetype-py"></i>
+
+                    </div>
+
+                    <h5>
+                        Python
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Main programming language used
+                        for machine learning and backend
+                        development.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-cpu"></i>
+
+                    </div>
+
+                    <h5>
+                        Scikit-learn
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Used to build, train and evaluate
+                        classification models.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-globe"></i>
+
+                    </div>
+
+                    <h5>
+                        Flask
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Used to create the web application
+                        and backend routes.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-table"></i>
+
+                    </div>
+
+                    <h5>
+                        Pandas
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Used for dataset loading,
+                        processing and manipulation.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-database"></i>
+
+                    </div>
+
+                    <h5>
+                        SQLite
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Used to store prediction history
+                        locally.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+
+                        <i class="bi bi-bootstrap-fill"></i>
+
+                    </div>
+
+                    <h5>
+                        Bootstrap
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        Used to create the responsive
+                        web interface.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- MACHINE LEARNING MODELS -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-bar-chart-fill"></i>
+
+            Machine Learning Models
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        {% if metrics and metrics.get("models") %}
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>
+                            Model
+                        </th>
+
+                        <th>
+                            Accuracy
+                        </th>
+
+                        <th>
+                            Precision
+                        </th>
+
+                        <th>
+                            Recall
+                        </th>
+
+                        <th>
+                            F1 Score
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for name, values in metrics["models"].items() %}
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                {{ name }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            {{ values["accuracy"] }}%
+
+                        </td>
+
+
+                        <td>
+
+                            {{ values["precision"] }}%
+
+                        </td>
+
+
+                        <td>
+
+                            {{ values["recall"] }}%
+
+                        </td>
+
+
+                        <td>
+
+                            {{ values["f1_score"] }}%
+
+                        </td>
+
+
+                        <td>
+
+                            {% if name == best_model %}
+
+                                <span class="badge bg-success">
+
+                                    <i class="bi bi-check-circle"></i>
+
+                                    Best Model
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-secondary">
+
+                                    Evaluated
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="alert alert-warning">
+
+            <i class="bi bi-exclamation-triangle"></i>
+
+            Model metrics are not available.
+
+            Please run:
+
+            <strong>
+                python train_model.py
+            </strong>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- BEST MODEL -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-8">
+
+                <p class="text-muted mb-1">
+
+                    Automatically Selected Model
+
+                </p>
+
+
+                <h2 class="text-primary fw-bold">
+
+                    {{ best_model }}
+
+                </h2>
+
+
+                {% if metrics
+                      and metrics.get("models")
+                      and metrics["models"].get(best_model) %}
+
+                    <p class="mb-0">
+
+                        Best Test Accuracy:
+
+                        <strong>
+
+                            {{ metrics["models"][best_model]["accuracy"] }}%
+
+                        </strong>
+
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="col-md-4 text-md-end">
+
+                <div class="model-badge">
+
+                    <i class="bi bi-trophy-fill"></i>
+
+                    Best Performing Model
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- PROJECT FEATURES -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-stars"></i>
+
+            Application Features
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="row g-3">
+
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        Multiple classification algorithms
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        Automatic best-model selection
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        Prediction probability
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        SQLite prediction history
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        Model performance dashboard
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        CSV export
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        PDF prediction reports
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        <i class="bi bi-check-circle text-success"></i>
+
+                        Responsive Bootstrap interface
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- HOW IT WORKS -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-diagram-3"></i>
+
+            How the System Works
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="row text-center g-4">
+
+
+            <div class="col-md-3">
+
+                <div class="info-card h-100">
+
+                    <div class="info-icon mx-auto">
+
+                        <i class="bi bi-person-vcard"></i>
+
+                    </div>
+
+                    <h5>
+                        1. Input
+                    </h5>
+
+                    <p class="text-muted">
+
+                        User enters the required
+                        dataset features.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="info-card h-100">
+
+                    <div class="info-icon mx-auto">
+
+                        <i class="bi bi-gear"></i>
+
+                    </div>
+
+                    <h5>
+                        2. Processing
+                    </h5>
+
+                    <p class="text-muted">
+
+                        The application preprocesses
+                        the input values.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="info-card h-100">
+
+                    <div class="info-icon mx-auto">
+
+                        <i class="bi bi-cpu"></i>
+
+                    </div>
+
+                    <h5>
+                        3. Prediction
+                    </h5>
+
+                    <p class="text-muted">
+
+                        The selected machine learning
+                        model generates a classification.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="info-card h-100">
+
+                    <div class="info-icon mx-auto">
+
+                        <i class="bi bi-file-earmark-bar-graph"></i>
+
+                    </div>
+
+                    <h5>
+                        4. Result
+                    </h5>
+
+                    <p class="text-muted">
+
+                        The result can be stored,
+                        viewed and exported.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- DATASET INFORMATION -->
+<!-- ============================= -->
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-header">
+
+        <h4 class="mb-0">
+
+            <i class="bi bi-database-fill"></i>
+
+            Dataset Information
+
+        </h4>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <p>
+
+            The project uses the UCI Heart Disease dataset.
+            The model uses 13 input features for binary
+            classification.
+
+        </p>
+
+
+        <div class="row g-3">
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <p class="text-muted mb-1">
+                        Input Features
+                    </p>
+
+                    <h3 class="fw-bold">
+                        13
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <p class="text-muted mb-1">
+                        Classification
+                    </p>
+
+                    <h3 class="fw-bold">
+                        Binary
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <p class="text-muted mb-1">
+                        Prediction Classes
+                    </p>
+
+                    <h3 class="fw-bold">
+                        2
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- IMPORTANT NOTICE -->
+<!-- ============================= -->
+
+<div class="alert alert-warning shadow-sm">
+
+    <h5>
+
+        <i class="bi bi-shield-exclamation"></i>
+
+        Important Notice
+
+    </h5>
+
+
+    <p class="mb-0">
+
+        This application is developed for academic and
+        educational purposes. The machine learning output
+        should not be considered a medical diagnosis or
+        a substitute for professional medical advice.
+
+    </p>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- NAVIGATION BUTTONS -->
+<!-- ============================= -->
+
+<div class="text-center mt-4 mb-3">
+
+    <a
+        href="/"
+        class="btn btn-primary btn-lg me-2">
+
+        <i class="bi bi-heart-pulse"></i>
+
+        Make Prediction
+
+    </a>
+
+
+    <a
+        href="/dashboard"
+        class="btn btn-outline-primary btn-lg">
+
+        <i class="bi bi-speedometer2"></i>
+
+        View Dashboard
+
+    </a>
+
+</div>
+
+
+{% endblock %}
+```

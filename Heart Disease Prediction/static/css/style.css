@@ -1,0 +1,1231 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+body {
+
+    background-color: #f5f7fb;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #212529;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+    box-shadow:
+        0 2px 12px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.navbar-brand {
+
+    font-size: 1.35rem;
+
+}
+
+
+.navbar .nav-link {
+
+    margin-left: 8px;
+
+    transition:
+        opacity 0.2s ease;
+
+}
+
+
+.navbar .nav-link:hover {
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd 0%,
+            #6610f2 100%
+        );
+
+    color: white;
+
+    padding: 50px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(13, 110, 253, 0.20);
+
+}
+
+
+.hero-section h1 {
+
+    line-height: 1.15;
+
+}
+
+
+.hero-section .lead {
+
+    max-width: 700px;
+
+    opacity: 0.95;
+
+}
+
+
+.hero-heart {
+
+    font-size: 130px;
+
+    animation:
+        heartBeat 1.5s infinite;
+
+}
+
+
+.model-label {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+}
+
+
+@keyframes heartBeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.08);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.08);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+
+    border: none;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+}
+
+
+.card-header {
+
+    background-color: #ffffff;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    padding: 20px 24px;
+
+}
+
+
+.card-body {
+
+    padding: 24px;
+
+}
+
+
+.form-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+/* =========================================
+   FORMS
+========================================= */
+
+.form-label {
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+
+}
+
+
+.form-control,
+.form-select {
+
+    min-height: 48px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid #dce1e7;
+
+}
+
+
+.form-control:focus,
+.form-select:focus {
+
+    border-color:
+        #0d6efd;
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(13, 110, 253, 0.12);
+
+}
+
+
+.input-group-text {
+
+    background-color: #f8f9fa;
+
+    border-color: #dce1e7;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+
+    border-radius: 10px;
+
+    padding:
+        10px 18px;
+
+    font-weight: 500;
+
+}
+
+
+.btn-lg {
+
+    padding:
+        12px 22px;
+
+}
+
+
+/* =========================================
+   INFO CARDS
+========================================= */
+
+.info-card {
+
+    background-color:
+        #ffffff;
+
+    border-radius:
+        17px;
+
+    padding:
+        28px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.info-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.info-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(13, 110, 253, 0.10);
+
+    color:
+        #0d6efd;
+
+    font-size: 24px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.stat-card {
+
+    background-color:
+        #ffffff;
+
+    border-radius:
+        17px;
+
+    padding:
+        25px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0, 0, 0, 0.05);
+
+}
+
+
+.stat-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(13, 110, 253, 0.10);
+
+    color:
+        #0d6efd;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================
+   MODEL BADGE
+========================================= */
+
+.model-badge {
+
+    display: inline-block;
+
+    padding:
+        12px 16px;
+
+    border-radius:
+        12px;
+
+    color:
+        #198754;
+
+    background:
+        rgba(25, 135, 84, 0.10);
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table {
+
+    vertical-align:
+        middle;
+
+}
+
+
+.table thead th {
+
+    white-space:
+        nowrap;
+
+}
+
+
+.table tbody tr {
+
+    transition:
+        background-color 0.15s ease;
+
+}
+
+
+/* =========================================
+   BADGES
+========================================= */
+
+.badge {
+
+    padding:
+        7px 10px;
+
+    border-radius:
+        8px;
+
+    font-weight:
+        500;
+
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress {
+
+    background:
+        #e9ecef;
+
+    border-radius:
+        20px;
+
+}
+
+
+.progress-bar {
+
+    border-radius:
+        20px;
+
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result-card {
+
+    max-width:
+        850px;
+
+    margin:
+        auto;
+
+}
+
+
+.result-icon {
+
+    font-size:
+        80px;
+
+    color:
+        #dc3545;
+
+}
+
+
+.probability-box {
+
+    background:
+        #f8f9fa;
+
+    border-radius:
+        17px;
+
+    padding:
+        28px;
+
+}
+
+
+.probability-box h1 {
+
+    font-size:
+        50px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    color:
+        #6c757d;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+
+        padding:
+            32px 22px;
+
+    }
+
+
+    .hero-section h1 {
+
+        font-size:
+            2.1rem;
+
+    }
+
+
+    .hero-heart {
+
+        font-size:
+            80px;
+
+        margin-top:
+            25px;
+
+    }
+
+
+    .card-body {
+
+        padding:
+            18px;
+
+    }
+
+
+    .stat-card {
+
+        padding:
+            20px;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .hero-section {
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .btn-lg {
+
+        width:
+            100%;
+
+    }
+
+
+    .hero-section .lead {
+
+        font-size:
+            1rem;
+
+    }
+
+}/* =========================================
+   GLOBAL
+========================================= */
+
+body {
+
+    background-color: #f5f7fb;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #212529;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+
+    box-shadow:
+        0 2px 12px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.navbar-brand {
+
+    font-size: 1.35rem;
+
+}
+
+
+.navbar .nav-link {
+
+    margin-left: 8px;
+
+    transition:
+        opacity 0.2s ease;
+
+}
+
+
+.navbar .nav-link:hover {
+
+    opacity: 0.8;
+
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd 0%,
+            #6610f2 100%
+        );
+
+    color: white;
+
+    padding: 50px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(13, 110, 253, 0.20);
+
+}
+
+
+.hero-section h1 {
+
+    line-height: 1.15;
+
+}
+
+
+.hero-section .lead {
+
+    max-width: 700px;
+
+    opacity: 0.95;
+
+}
+
+
+.hero-heart {
+
+    font-size: 130px;
+
+    animation:
+        heartBeat 1.5s infinite;
+
+}
+
+
+.model-label {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+}
+
+
+@keyframes heartBeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.08);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.08);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+
+    border: none;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+}
+
+
+.card-header {
+
+    background-color: #ffffff;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+    padding: 20px 24px;
+
+}
+
+
+.card-body {
+
+    padding: 24px;
+
+}
+
+
+.form-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+/* =========================================
+   FORMS
+========================================= */
+
+.form-label {
+
+    font-weight: 600;
+
+    margin-bottom: 7px;
+
+}
+
+
+.form-control,
+.form-select {
+
+    min-height: 48px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid #dce1e7;
+
+}
+
+
+.form-control:focus,
+.form-select:focus {
+
+    border-color:
+        #0d6efd;
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(13, 110, 253, 0.12);
+
+}
+
+
+.input-group-text {
+
+    background-color: #f8f9fa;
+
+    border-color: #dce1e7;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+
+    border-radius: 10px;
+
+    padding:
+        10px 18px;
+
+    font-weight: 500;
+
+}
+
+
+.btn-lg {
+
+    padding:
+        12px 22px;
+
+}
+
+
+/* =========================================
+   INFO CARDS
+========================================= */
+
+.info-card {
+
+    background-color:
+        #ffffff;
+
+    border-radius:
+        17px;
+
+    padding:
+        28px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.info-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+.info-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        rgba(13, 110, 253, 0.10);
+
+    color:
+        #0d6efd;
+
+    font-size: 24px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.stat-card {
+
+    background-color:
+        #ffffff;
+
+    border-radius:
+        17px;
+
+    padding:
+        25px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(0, 0, 0, 0.05);
+
+}
+
+
+.stat-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(13, 110, 253, 0.10);
+
+    color:
+        #0d6efd;
+
+    font-size: 25px;
+
+}
+
+
+/* =========================================
+   MODEL BADGE
+========================================= */
+
+.model-badge {
+
+    display: inline-block;
+
+    padding:
+        12px 16px;
+
+    border-radius:
+        12px;
+
+    color:
+        #198754;
+
+    background:
+        rgba(25, 135, 84, 0.10);
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table {
+
+    vertical-align:
+        middle;
+
+}
+
+
+.table thead th {
+
+    white-space:
+        nowrap;
+
+}
+
+
+.table tbody tr {
+
+    transition:
+        background-color 0.15s ease;
+
+}
+
+
+/* =========================================
+   BADGES
+========================================= */
+
+.badge {
+
+    padding:
+        7px 10px;
+
+    border-radius:
+        8px;
+
+    font-weight:
+        500;
+
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress {
+
+    background:
+        #e9ecef;
+
+    border-radius:
+        20px;
+
+}
+
+
+.progress-bar {
+
+    border-radius:
+        20px;
+
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result-card {
+
+    max-width:
+        850px;
+
+    margin:
+        auto;
+
+}
+
+
+.result-icon {
+
+    font-size:
+        80px;
+
+    color:
+        #dc3545;
+
+}
+
+
+.probability-box {
+
+    background:
+        #f8f9fa;
+
+    border-radius:
+        17px;
+
+    padding:
+        28px;
+
+}
+
+
+.probability-box h1 {
+
+    font-size:
+        50px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    color:
+        #6c757d;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+
+        padding:
+            32px 22px;
+
+    }
+
+
+    .hero-section h1 {
+
+        font-size:
+            2.1rem;
+
+    }
+
+
+    .hero-heart {
+
+        font-size:
+            80px;
+
+        margin-top:
+            25px;
+
+    }
+
+
+    .card-body {
+
+        padding:
+            18px;
+
+    }
+
+
+    .stat-card {
+
+        padding:
+            20px;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .hero-section {
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .btn-lg {
+
+        width:
+            100%;
+
+    }
+
+
+    .hero-section .lead {
+
+        font-size:
+            1rem;
+
+    }
+
+}

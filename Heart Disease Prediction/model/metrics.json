@@ -1,0 +1,85 @@
+{
+    "best_model": "Random Forest",
+    "models": {
+        "Logistic Regression": {
+            "accuracy": 86.89,
+            "precision": 81.25,
+            "recall": 92.86,
+            "f1_score": 86.67,
+            "confusion_matrix": [
+                [
+                    27,
+                    6
+                ],
+                [
+                    2,
+                    26
+                ]
+            ]
+        },
+        "KNN": {
+            "accuracy": 77.05,
+            "precision": 73.33,
+            "recall": 78.57,
+            "f1_score": 75.86,
+            "confusion_matrix": [
+                [
+                    25,
+                    8
+                ],
+                [
+                    6,
+                    22
+                ]
+            ]
+        },
+        "Decision Tree": {
+            "accuracy": 77.05,
+            "precision": 71.88,
+            "recall": 82.14,
+            "f1_score": 76.67,
+            "confusion_matrix": [
+                [
+                    24,
+                    9
+                ],
+                [
+                    5,
+                    23
+                ]
+            ]
+        },
+        "Random Forest": {
+            "accuracy": 91.8,
+            "precision": 87.1,
+            "recall": 96.43,
+            "f1_score": 91.53,
+            "confusion_matrix": [
+                [
+                    29,
+                    4
+                ],
+                [
+                    1,
+                    27
+                ]
+            ]
+        },
+        "SVM": {
+            "accuracy": 81.97,
+            "precision": 77.42,
+            "recall": 85.71,
+            "f1_score": 81.36,
+            "confusion_matrix": [
+                [
+                    26,
+                    7
+                ],
+                [
+                    4,
+                    24
+                ]
+            ]
+        }
+    }
+}
